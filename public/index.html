@@ -8,6 +8,7 @@
   <link rel="shortcut icon" href="icons/icon-192x192.png" type="image/x-icon">
   <link rel="manifest" href="./manifest.json">
 
+  <link rel="manifest" href="./manifest.json">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="styles.css">
 
@@ -43,8 +44,13 @@
   </div>
 
   <script>
-    if('serviceWorker' in navigator){
-      navigator.serviceWorker.register('/service-worker.js');
+    if('serviceWorker' in navigator) {
+      window.addEventListener("load", ()=> {
+        navigator.serviceWorker.register('sw.js')
+        .then(swReg => {
+          console.log("registered!");
+        }).catch(console.error());
+      });
     }
   </script>
 
